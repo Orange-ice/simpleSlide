@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.js – The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+<!--    <link rel="stylesheet" href="dist/theme/beige.css" id="theme">-->
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1981679_fze649d4tg6.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+<div class="control">
+    <span class="iconfont icon-setting"></span>
+</div>
+
+<div class="menu">
+    <span class="iconfont icon-close"></span>
+    <div class="detail">
+        <div class="tab active"><span class="iconfont icon-edit"></span>内容编辑</div>
+        <div class="tab"><span class="iconfont icon-theme"></span>主题与特效</div>
+        <div class="tab"><span class="iconfont icon-download"></span>下载PDF</div>
+        <div class="content active">
+            <div class="header">编辑</div>
+            <div class="body editor">
+                <textarea></textarea>
+                <div>
+                    <button class="button-save">保存</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">主题特效</div>
+            <div class="body theme">
+                <h5>主题</h5>
+                <div class="themes">
+                    <figure data-theme="beige">
+                        <img src="img/beige.jpg" alt="beige">
+                        <figcaption>beige</figcaption>
+                    </figure>
+                    <figure data-theme="black">
+                        <img src="img/black.jpg" alt="black">
+                        <figcaption>black</figcaption>
+                    </figure>
+                    <figure data-theme="blood">
+                        <img src="img/blood.jpg" alt="blood">
+                        <figcaption>blood</figcaption>
+                    </figure>
+                    <figure data-theme="league">
+                        <img src="img/league.jpg" alt="league">
+                        <figcaption>league</figcaption>
+                    </figure>
+                    <figure data-theme="moon">
+                        <img src="img/moon.jpg" alt="moon">
+                        <figcaption>moon</figcaption>
+                    </figure>
+                    <figure data-theme="night">
+                        <img src="img/night.jpg" alt="night">
+                        <figcaption>night</figcaption>
+                    </figure>
+                    <figure data-theme="serif">
+                        <img src="img/serif.jpg" alt="serif">
+                        <figcaption>serif</figcaption>
+                    </figure>
+                    <figure data-theme="simple">
+                        <img src="img/simple.jpg" alt="simple">
+                        <figcaption>simple</figcaption>
+                    </figure>
+                    <figure data-theme="sky">
+                        <img src="img/sky.jpg" alt="sky">
+                        <figcaption>sky</figcaption>
+                    </figure>
+                    <figure data-theme="solarized">
+                        <img src="img/solarized.jpg" alt="solarized">
+                        <figcaption>solarized</figcaption>
+                    </figure>
+                    <figure data-theme="white">
+                        <img src="img/white.jpg" alt="white">
+                        <figcaption>white</figcaption>
+                    </figure>
+                </div>
+                <h5>转场</h5>
+                <label>
+                    <select class="transition">
+                        <option value="slide">滑动</option>
+                        <option value="fade">淡化</option>
+                        <option value="convex">凸滑</option>
+                        <option value="concave">凹滑</option>
+                        <option value="zoom">缩放</option>
+                        <option value="none">无</option>
+                    </select>
+                </label>
+                <h5>对齐</h5>
+                <label>
+                    <select class="align">
+                        <option value="center">居中</option>
+                        <option value="left-top">左上</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">下载</div>
+            <div class="body download">
+                <p>下载PDF</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <div class="slides"></div>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/zoom/zoom.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/search/search.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+
+    // Also available as an ES module, see:
+    // https://revealjs.com/initialization/
+    // Reveal.initialize({
+    //     controls: true,
+    //     progress: true,
+    //     center: true,
+    //     hash: true,
+    //
+    //     // Learn about plugins: https://revealjs.com/plugins/
+    //     plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+    // });
+
+</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

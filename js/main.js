@@ -175,10 +175,40 @@ const Theme = {
     }
 }
 
+const Print = {
+    init(){
+        this.$download = $('.download')
+        this.bind()
+        this.start()
+    },
+    bind(){
+        this.$download.addEventListener('click',()=>{
+            let $link = document.createElement('a')
+            $link.setAttribute('target','_blank')
+            $link.setAttribute('href',location.href.replace(/#\/.*/, '?print-pdf'))
+            console.log($link.href)
+            $link.click()
+        })
+        window.onafterprint = ()=>window.close()
+    },
+    start(){
+        let link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.type = 'text/css'
+        if(window.location.search.match(/print-pdf/gi)){
+            link.href = 'css/print/pdf.css'
+            window.print()
+        } else{
+            link.href = 'css/print/paper.css'
+        }
+        document.head.appendChild(link)
+    }
+}
+
 const App = {
     init() {
         [...arguments].forEach(Module => Module.init())
     }
 }
 
-App.init(Menu, Editor,Theme)
+App.init(Menu, Editor,Theme,Print)

@@ -123,6 +123,10 @@ button:hover{
     outline: none;
 }
 
+.menu .content .speaker p{
+    line-height: 30px;
+}
+
 .menu .editor [type=file]{
     display: none;
 }

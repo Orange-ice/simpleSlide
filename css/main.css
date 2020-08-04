@@ -122,6 +122,18 @@ button:hover{
     border: none;
     outline: none;
 }
+
+.menu .editor [type=file]{
+    display: none;
+}
+.menu .editor .uploador{
+    padding: 10px 0;
+    cursor: pointer;
+}
+.menu .editor label{
+    cursor: pointer;
+}
+
 .menu .content button{
     margin-top: 16px;
 }

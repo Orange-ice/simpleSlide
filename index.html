@@ -40,6 +40,10 @@
             <div class="header">编辑</div>
             <div class="body editor">
                 <textarea></textarea>
+                <div class="uploador">
+                    <input type="file" id="img-uploador" accept="image/*">
+                    <label for="img-uploador">点击此处上传图片(支持.png、.jpg、.gif，最大2M)</label>
+                </div>
                 <div>
                     <button class="button-save">保存</button>
                 </div>
@@ -130,6 +134,8 @@
         <div class="slides"></div>
     </div>
 </div>
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"></script>
 
 <script src="dist/reveal.js"></script>
 <script src="plugin/zoom/zoom.js"></script>

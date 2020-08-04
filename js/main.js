@@ -96,6 +96,57 @@ const Menu = {
     }
 }
 
+const ImgUploador = {
+    init(){
+        this.$fileInput = $('#img-uploador')
+        this.$textarea = $('.editor textarea')
+
+        AV.init({
+            appId: "JteeDlO2w9XUck9puq91cKFr-gzGzoHsz",
+            appKey: "sEQXrUBSxYuETJsinBeaONV9",
+            serverURLs: "https://jteedlo2.lc-cn-n1-shared.com"
+        })
+
+        this.bind()
+    },
+    bind(){
+        const self = this
+        this.$fileInput.onchange = function () {
+            if (this.files.length > 0) {
+                let localFile = this.files[0]
+                console.log(localFile)
+                if(localFile.size/1048576 > 2) {
+                    alert('文件不能超过2M')
+                    return
+                }
+                self.insertText(`![上传中，进度0%]()`)
+                let  avFile = new AV.File(encodeURI(localFile.name), localFile)
+                avFile.save({
+                    keepFileName: true,
+                    onprogress(progress) {
+                        self.insertText(`![上传中，进度${progress.percent}%]()`)
+                    }
+                }).then(file => {
+                    console.log('文件保存完成')
+                    console.log(file)
+                    let text = `![${file.attributes.name}](${file.attributes.url}?imageView2/0/w/800/h/400)`
+                    self.insertText(text)
+                }).catch(err => console.log(err))
+            }
+        }
+    },
+    insertText(text = '') {
+        let $textarea = this.$textarea
+        let start = $textarea.selectionStart
+        let end = $textarea.selectionEnd
+        let oldText = $textarea.value
+
+        $textarea.value = `${oldText.substring(0, start)}${text} ${oldText.substring(end)}`
+        $textarea.focus()
+        $textarea.setSelectionRange(start, start + text.length)
+    }
+}
+
 const Editor = {
     init() {
         console.log('Editor init...')
@@ -131,7 +182,7 @@ const Editor = {
 }
 
 const Theme = {
-    init(){
+    init() {
         this.$$figures = $$('.themes figure')
         this.$transition = $('.theme .transition')
         this.$align = $('.theme .align')
@@ -141,33 +192,33 @@ const Theme = {
         this.bind()
         this.loadTheme()
     },
-    bind(){
-       this.$$figures.forEach(figure => figure.onclick = ()=>{
-           this.$$figures.forEach(item => item.classList.remove('select'))
-           figure.classList.add('select')
-           this.setTheme(figure.dataset.theme)
-       })
+    bind() {
+        this.$$figures.forEach(figure => figure.onclick = () => {
+            this.$$figures.forEach(item => item.classList.remove('select'))
+            figure.classList.add('select')
+            this.setTheme(figure.dataset.theme)
+        })
 
         this.$transition.onchange = function () {
-           localStorage.transition = this.value
+            localStorage.transition = this.value
             location.reload()
         }
         this.$align.onchange = function () {
-           localStorage.align = this.value
+            localStorage.align = this.value
             location.reload()
         }
     },
-    setTheme(theme){
+    setTheme(theme) {
         localStorage.theme = theme
         location.reload()
     },
-    loadTheme(){
+    loadTheme() {
         let theme = localStorage.theme || 'beige'
         let $link = document.createElement('link')
         $link.rel = 'stylesheet'
         $link.href = `dist/theme/${theme}.css`
         document.head.appendChild($link)
-        Array.from(this.$$figures).find(item=>item.dataset.theme === theme).classList.add('select')
+        Array.from(this.$$figures).find(item => item.dataset.theme === theme).classList.add('select')
 
         this.$transition.value = localStorage.transition || 'slide'
         this.$align.value = localStorage.align || 'center'
@@ -176,29 +227,29 @@ const Theme = {
 }
 
 const Print = {
-    init(){
+    init() {
         this.$download = $('.download')
         this.bind()
         this.start()
     },
-    bind(){
-        this.$download.addEventListener('click',()=>{
+    bind() {
+        this.$download.addEventListener('click', () => {
             let $link = document.createElement('a')
-            $link.setAttribute('target','_blank')
-            $link.setAttribute('href',location.href.replace(/#\/.*/, '?print-pdf'))
+            $link.setAttribute('target', '_blank')
+            $link.setAttribute('href', location.href.replace(/#\/.*/, '?print-pdf'))
             console.log($link.href)
             $link.click()
         })
-        window.onafterprint = ()=>window.close()
+        window.onafterprint = () => window.close()
     },
-    start(){
+    start() {
         let link = document.createElement('link')
         link.rel = 'stylesheet'
         link.type = 'text/css'
-        if(window.location.search.match(/print-pdf/gi)){
+        if (window.location.search.match(/print-pdf/gi)) {
             link.href = 'css/print/pdf.css'
             window.print()
-        } else{
+        } else {
             link.href = 'css/print/paper.css'
         }
         document.head.appendChild(link)
@@ -211,4 +262,4 @@ const App = {
     }
 }
 
-App.init(Menu, Editor,Theme,Print)
+App.init(Menu, Editor, Theme, Print,ImgUploador)

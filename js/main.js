@@ -155,6 +155,7 @@ const Editor = {
         this.$slideContainer = $('.slides')
         this.markdown = localStorage.markdown || `# 简易幻灯片
 让工作更专注于效率
+> 鼠标浮到左上角点击打开设置
             `
 
         this.bind()
@@ -213,7 +214,7 @@ const Theme = {
         location.reload()
     },
     loadTheme() {
-        let theme = localStorage.theme || 'beige'
+        let theme = localStorage.theme || 'league'
         let $link = document.createElement('link')
         $link.rel = 'stylesheet'
         $link.href = `dist/theme/${theme}.css`

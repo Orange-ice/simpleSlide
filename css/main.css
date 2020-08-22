@@ -36,7 +36,7 @@ button:hover{
 .control .icon-setting{
     margin: 16px;
     font-size: 40px;
-    color: white;
+    color: red;
     display: inline-block;
     cursor: pointer;
 }
